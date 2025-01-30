@@ -1,7 +1,7 @@
 package co.wedevx.digitalbank.automation.ui.steps.data_transformers;
 
-import co.wedevx.digitalbank.automation.ui.models.AccountCard;
 import co.wedevx.digitalbank.automation.ui.models.BankTransaction;
+import co.wedevx.digitalbank.automation.ui.models.AccountCard;
 import co.wedevx.digitalbank.automation.ui.models.NewCheckingAccountInfo;
 import io.cucumber.java.DataTableType;
 

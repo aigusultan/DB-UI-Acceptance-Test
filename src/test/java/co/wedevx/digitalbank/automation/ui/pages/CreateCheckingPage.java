@@ -2,6 +2,8 @@ package co.wedevx.digitalbank.automation.ui.pages;
 
 import co.wedevx.digitalbank.automation.ui.models.NewCheckingAccountInfo;
 import co.wedevx.digitalbank.automation.ui.utils.ConfigReader;
+import co.wedevx.digitalbank.automation.ui.utils.Driver;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +11,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static co.wedevx.digitalbank.automation.ui.utils.Driver.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreateCheckingPage extends BaseMenuPage {
@@ -47,8 +48,8 @@ public class CreateCheckingPage extends BaseMenuPage {
         //user clicks on the new checking button
         newCheckingMenuItem.click();
 
-        assertEquals(ConfigReader.getPropertiesValue("digitalbank.createnewcheckingurl"),
-                getDriver().getCurrentUrl(), "New Checking Button did not redirect the user to "
+        Assertions.assertEquals(ConfigReader.getPropertiesValue("digitalbank.createnewcheckingurl"),
+                Driver.getDriver().getCurrentUrl(), "New Checking Button did not redirect the user to "
                         + ConfigReader.getPropertiesValue("digitalbank.createnewcheckingurl"));
 
         //user selects account type
