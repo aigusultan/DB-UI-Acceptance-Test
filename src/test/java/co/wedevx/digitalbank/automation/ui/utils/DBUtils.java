@@ -15,7 +15,7 @@ public class DBUtils {
     //all methods in this class will use this connection, so it needs to be declared on a class level
 
     //method to establish connection with DB
-    public static void establishConnection() {
+    public static void establishConnection() throws SQLException {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,11 +26,12 @@ public class DBUtils {
                     getPropertiesValue("digitalbank.db.password"));
 
         } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Unable to establish connection.");
             e.printStackTrace();
+            throw new SQLException("Unable to establish DB connection.");
         }
 
     }
-
 
     //method that can dynamically send select statement and return a List<Map<>> of all columns
     //List will be the rows (user) and Map will be columns and values (account info for the given user)

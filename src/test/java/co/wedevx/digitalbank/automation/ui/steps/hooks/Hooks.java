@@ -4,22 +4,24 @@ import co.wedevx.digitalbank.automation.ui.utils.DBUtils;
 import co.wedevx.digitalbank.automation.ui.utils.Driver;
 import io.cucumber.java.*;
 
+import java.sql.SQLException;
+
 import static co.wedevx.digitalbank.automation.ui.utils.Driver.getDriver;
 
 public class Hooks {
 
-    @Before("@Registration")
-    public void establishConnectionToDB() {
+    @Before("@DB")
+    public void establishConnectionToDB() throws SQLException {
         DBUtils.establishConnection();
 
     }
 
-    @Before("not @Registration")
+    //@Before("not @Registration")
     public void the_user_is_on_dbank_home_page() {
         getDriver().get("https://dbank-qa.wedevx.co/bank/login");
     }
 
-    @After("not @NegativeRegistrationCases")
+    //@After("not @NegativeRegistrationCases")
     public void afterEachScenario(Scenario scenario) {
         Driver.takeScreenshot(scenario);
         Driver.closeDriver();
